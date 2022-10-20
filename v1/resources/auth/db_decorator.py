@@ -17,6 +17,8 @@ from config import AuthConfig, DbConfig
 try:
     mongo_uri = f'mongodb://{DbConfig["user"]}:{DbConfig["pass"]}@{DbConfig["host"]}:{DbConfig["port"]}'
     myclient = MongoClient(mongo_uri)
+
+
 except ConnectionFailure:
     logging.error("Error de conección a Mongo: %s", mongo_uri)
 

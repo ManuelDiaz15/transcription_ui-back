@@ -15,9 +15,9 @@ api = Api(app) #instanciamos el api
 
 load_dotenv()
 
+
 initialize_routes(api) #inicializamos las rutas
 if __name__ == '__main__':
     # inicializamos el servidor flask con el puerto 4043
     # (este puerto debe ser cambiado al momento de probar en maquina de desarrollo)
     app.run(host=getenv("APP_HOST"), port=getenv("APP_PORT"), debug=True)
- 
