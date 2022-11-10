@@ -8,12 +8,11 @@ from tokenize import Double, Double3
 from flask import session, jsonify
 from flask_restful import Resource, reqparse
 from mongoengine.context_managers import switch_db
-from v1.resources.auth.authorization import Auth
-from v1.resources.auth.dbDecorator import dbAccess
 #Import del sistema
 from v1.resources.auth.authorization import Auth
 from v1.resources.auth.dbDecorator import dbAccess
 from types import *
+import pymongo
 
 logger = logging.getLogger(__name__)
 
@@ -171,7 +170,18 @@ class Transcripciones_CRUD(Resource):
     @dbAccess.mongoEngineAccess
     def get(self):
         with switch_db(Transcripciones, session["dbMongoEngine"]):
-            my_model = Transcripciones.objects()
+            my_model = Transcripciones.objects.fields(id=0,AudioNombre=1, Confidence=1, Campania=1, Cliente=1)
+            if my_model:
+                return jsonify(my_model.to_json())
+        return "Objeto no encontrado", 400
+
+class Coreccion (Resource):
+    @Auth.authenticate
+    @dbAccess.mongoEngineAccess
+    def get(self):
+        
+        with switch_db(Transcripciones, session["dbMongoEngine"]):
+            my_model = Transcripciones.objects(AudioNombre="FALRESP_20220910-125556_56953670812_485_175459783-all.mp3").fields(TranscritoChat=1, id=0)
             if my_model:
                 return jsonify(my_model.to_json())
         return "Objeto no encontrado", 400

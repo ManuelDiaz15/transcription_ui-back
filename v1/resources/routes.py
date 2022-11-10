@@ -2,7 +2,7 @@
 #from v1.resources.example.example import Role
 from v1.resources.example.example_pymongo import EndPoint1, EndPoint2, EndPoint3
 from v1.resources.example.example_crud import Model1_CRUD
-from v1.resources.example.Transcripciones_CRUD import Transcripciones_CRUD
+from v1.resources.example.Transcripciones_CRUD import Transcripciones_CRUD, Coreccion
 
 def initialize_routes(api):
     '''
@@ -15,4 +15,5 @@ def initialize_routes(api):
     api.add_resource(EndPoint3, '/endpoint3', endpoint='auth:recurso3', methods=['GET',])
     api.add_resource(Model1_CRUD, '/model1', endpoint='auth:recurso4', methods=['GET', 'POST', 'PUT', 'DELETE'])
     api.add_resource(Transcripciones_CRUD, '/Transcripciones', endpoint='auth:TR_CRUD', methods=['GET', 'POST', 'PUT', 'DELETE'])
+    api.add_resource(Coreccion, '/Coreccion', endpoint='auth:TR_CRUD:1', methods=['GET',])
 
