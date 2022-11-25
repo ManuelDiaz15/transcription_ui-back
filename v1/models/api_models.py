@@ -14,5 +14,8 @@ class Model1(Document):
 class Model2(DynamicDocument):
     meta = {'collection': 'model2'}
 
-class Transcripciones(DynamicDocument):
-    meta = {'collection': 'transcripciones'}
+class Transcripciones_Originales(DynamicDocument):
+    meta = {'collection': 'Transcripciones_Originales'}
+
+class Transcripciones_Modificadas(DynamicDocument):
+    meta = {'collection': 'Transcripciones_Modificadas'}
