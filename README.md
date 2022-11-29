@@ -72,5 +72,13 @@ docker-compose down
 
 ### O localhost si es desarrollo local
 
+### Creación de recurso Keycloak
+Al ingresar en plataforma Keycloak "localhost:8080", le realizamos click en Realm de Alloxentric, nos dirigimos a "Clients"
+1)En la lista nos dirigimos a xentric_base, Authorization/Resources y creamos un nuevo recurso que se llamará "TR_CRUD".
+2)El nuevo recurso "TR_CRUD", tendrá los siguientes "Scopes":Create, Delete, View y Update.
+3)A "TR_CRUD" se le crearon 2 permisos: 
+3.1)"TR_CRUD_FullAccess" este con la política "role1-policy", recurso asociado "TR_CRUD", "Scopes":Create, Delete, View y Update.
+3.2)"TR_CRUD_view" con las políticas asociadas "role1-policy" y "role2-policy", recurso asociado "TR_CRUD", "Scopes":View.
+Con esto estaría listo la configuración necesaria del stack "xentric_dev_stack".
 <http://localhost:9090> o
 <http://127.0.0.1:9090>
